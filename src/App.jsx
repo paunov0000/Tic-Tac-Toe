@@ -1,20 +1,22 @@
+import Square from "./components/Square";
+
 export default function Board() {
   return (
     <>
       <div className="board-row">
-        <button className="square">1</button>
-        <button className="square">2</button>
-        <button className="square">3</button>
+        <Square value={1}></Square>
+        <Square value={2}></Square>
+        <Square value={3}></Square>
       </div>
       <div className="board-row">
-        <button className="square">4</button>
-        <button className="square">5</button>
-        <button className="square">6</button>
+        <Square value={4}></Square>
+        <Square value={5}></Square>
+        <Square value={6}></Square>
       </div>
       <div className="board-row">
-        <button className="square">7</button>
-        <button className="square">8</button>
-        <button className="square">9</button>
+        <Square value={7}></Square>
+        <Square value={8}></Square>
+        <Square value={9}></Square>
       </div>
     </>
   );
