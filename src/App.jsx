@@ -3,6 +3,7 @@ import Square from './components/Square';
 
 export default function Board() {
 	const [squares, setSquares] = useState(Array(9).fill(null));
+	const [xIsNext, setXIsNext] = useState(true);
 
 	function handleClick(i) {
 		const nextSquares = squares.slice();
