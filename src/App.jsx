@@ -6,7 +6,7 @@ export default function Board() {
 	const [xIsNext, setXIsNext] = useState(true);
 
 	function handleClick(i) {
-		if (squares[i] !== null) {
+		if (squares[i] !== null || calculateWinner(squares) !== null) {
 			return;
 		}
 		const nextSquares = squares.slice();
