@@ -1,12 +1,12 @@
 import { useState } from 'react';
 
-export default function Square({ value, onSquareClick }) {
+export default function Square({ value, onSquareClick, className }) {
 	return (
 		<button
 			onClick={onSquareClick}
-			className='square'
+			className={className}
 		>
-			{value}
+			{value ?? '-'}
 		</button>
 	);
 }
