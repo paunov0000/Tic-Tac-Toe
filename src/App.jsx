@@ -10,7 +10,12 @@ export default function Board() {
 	if (winner !== null) {
 		status = `Winner: ${winner}`;
 	} else {
-		status = `Next player: ${xIsNext ? 'X' : 'O'}`;
+		console.log(squares.some((s) => s === null));
+		if (squares.some((s) => s === null)) {
+			status = `Next player: ${xIsNext ? 'X' : 'O'}`;
+		} else {
+			status = `Draw`;
+		}
 	}
 
 	function handleClick(i) {
