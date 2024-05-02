@@ -17,11 +17,11 @@ export default function Board() {
 		status.message = `Winner: ${winner}`;
 		status.style = `text-green-400 font-bold`;
 		winner === 'X' ? setXScore(xScore + 1) : setOScore(oScore + 1);
-		setSquares(Array(9).fill(null));
+		setSquares(Array(9).fill(null)); //TODO: App enters in an infinite loop if not reset lol
 	} else {
-		// console.log(squares.some((s) => s === null));
 		if (squares.some((s) => s === null)) {
-			status.message = `Next player: ${xIsNext ? 'X' : 'O'}`;
+			const nextPlayer = xIsNext ? 'X' : 'O';
+			status.message = `Next player: ${nextPlayer}`;
 			status.style = `text-blue-400 font-bold`;
 		} else {
 			status.message = `Draw`;
