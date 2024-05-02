@@ -13,13 +13,15 @@ export default function Board() {
 
 	if (winner !== null) {
 		status.message = `Winner: ${winner}`;
+		status.style = `text-green-400 font-bold`;
 	} else {
 		// console.log(squares.some((s) => s === null));
 		if (squares.some((s) => s === null)) {
 			status.message = `Next player: ${xIsNext ? 'X' : 'O'}`;
+			status.style = `text-blue-400 font-bold`;
 		} else {
 			status.message = `Draw`;
-			status.style = `text-yellow-300`;
+			status.style = `text-yellow-400 font-bold`;
 		}
 	}
 
