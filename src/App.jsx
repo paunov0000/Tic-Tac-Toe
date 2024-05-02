@@ -7,7 +7,7 @@ export default function Board() {
 	const [xScore, setXScore] = useState(0);
 	const [oScore, setOScore] = useState(0);
 
-	const winner = calculateWinner(squares);
+	let winner = calculateWinner(squares);
 	let status = {
 		message: '',
 		style: '',
@@ -16,6 +16,8 @@ export default function Board() {
 	if (winner !== null) {
 		status.message = `Winner: ${winner}`;
 		status.style = `text-green-400 font-bold`;
+		winner === 'X' ? setXScore(xScore + 1) : setOScore(oScore + 1);
+		setSquares(Array(9).fill(null));
 	} else {
 		// console.log(squares.some((s) => s === null));
 		if (squares.some((s) => s === null)) {
