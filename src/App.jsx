@@ -67,65 +67,79 @@ export default function Board() {
 
 	return (
 		<>
-			<div className='flex gap-80 w-site justify-center'>
-				<div className='flex flex-col items-center gap-8'>
+			<div className='flex gap-80 w-site justify-center text-3xl'>
+				<div className='flex flex-col items-center gap-24'>
 					<div className={status.style}>{status.message}</div>
 					<div>
 						<div className='board-row'>
 							<Square
 								value={squares[0]}
 								onSquareClick={() => handleClick(0)}
-								className='border-b-2 border-r-2 border-black w-8 h-8'
+								className='border-b-4 border-r-4 border-black w-16 h-16'
 							></Square>
 							<Square
 								value={squares[1]}
 								onSquareClick={() => handleClick(1)}
-								className='border-b-2 border-r-2 border-black w-8 h-8'
+								className='border-b-4 border-r-4 border-black w-16 h-16'
 							></Square>
 							<Square
 								value={squares[2]}
 								onSquareClick={() => handleClick(2)}
-								className='border-b-2 border-black w-8 h-8'
+								className='border-b-4 border-black w-16 h-16'
 							></Square>
 						</div>
 						<div className='board-row'>
 							<Square
 								value={squares[3]}
 								onSquareClick={() => handleClick(3)}
-								className='border-b-2 border-r-2 border-black w-8 h-8'
+								className='border-b-4 border-r-4 border-black w-16 h-16'
 							></Square>
 							<Square
 								value={squares[4]}
 								onSquareClick={() => handleClick(4)}
-								className='border-b-2 border-r-2 border-black w-8 h-8'
+								className='border-b-4 border-r-4 border-black w-16 h-16'
 							></Square>
 							<Square
 								value={squares[5]}
 								onSquareClick={() => handleClick(5)}
-								className='border-b-2 border-black w-8 h-8'
+								className='border-b-4 border-black w-16 h-16'
 							></Square>
 						</div>
 						<div className='board-row'>
 							<Square
 								value={squares[6]}
 								onSquareClick={() => handleClick(6)}
-								className='border-r-2 border-black w-8 h-8'
+								className='border-r-4 border-black w-16 h-16'
 							></Square>
 							<Square
 								value={squares[7]}
 								onSquareClick={() => handleClick(7)}
-								className='border-r-2 border-black w-8 h-8'
+								className='border-r-4 border-black w-16 h-16'
 							></Square>
 							<Square
 								value={squares[8]}
 								onSquareClick={() => handleClick(8)}
-								className='w-8 h-8'
+								className='w-16 h-16'
 							></Square>
 						</div>
 					</div>
 				</div>
 				<div>
-					<p>Score</p>
+					<div>
+						<p>Score</p>
+					</div>
+					<div>
+						<div>
+							<p>
+								X: <span>{xScore}</span>
+							</p>
+						</div>
+						<div>
+							<p>
+								O: <span>{oScore}</span>
+							</p>
+						</div>
+					</div>
 				</div>
 			</div>
 		</>
