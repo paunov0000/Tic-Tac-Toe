@@ -4,6 +4,8 @@ import Square from './components/Square';
 export default function Board() {
 	const [squares, setSquares] = useState(Array(9).fill(null));
 	const [xIsNext, setXIsNext] = useState(true);
+	const [xScore, setXScore] = useState(0);
+	const [oScore, setOScore] = useState(0);
 
 	const winner = calculateWinner(squares);
 	let status = {
