@@ -7,6 +7,9 @@ export default function Board() {
 	const [xScore, setXScore] = useState(0);
 	const [oScore, setOScore] = useState(0);
 
+	const xPlayerStyle = 'text-purple-300';
+	const oPlayerStyle = 'text-pink-300';
+
 	let winner = calculateWinner(squares);
 	let status = {
 		message: '',
