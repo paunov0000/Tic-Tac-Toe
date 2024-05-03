@@ -14,6 +14,7 @@ export default function Board() {
 	let status = {
 		message: '',
 		style: '',
+		player: '',
 	};
 
 	if (winner !== null) {
