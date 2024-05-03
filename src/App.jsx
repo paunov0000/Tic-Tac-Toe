@@ -18,15 +18,17 @@ export default function Board() {
 	};
 
 	if (winner !== null) {
-		status.message = `Winner: ${winner}`;
-		status.style = `text-green-400 font-bold`;
-		winner === 'X' ? setXScore(xScore + 1) : setOScore(oScore + 1);
-		setSquares(Array(9).fill(null)); //TODO: App enters in an infinite loop if not reset lol
+		status.message = `Winner: `;
+		status.style = `text-orange-400 font-bold`;
+		status.player = winner;
+		// winner === 'X' ? setXScore(xScore + 1) : setOScore(oScore + 1);
+		// setSquares(Array(9).fill(null)); //TODO: App enters in an infinite loop if not reset lol
 	} else {
 		if (squares.some((s) => s === null)) {
 			const nextPlayer = xIsNext ? 'X' : 'O';
-			status.message = `Next player: ${nextPlayer}`;
+			status.message = `Next player: `;
 			status.style = `text-blue-400 font-bold`;
+			status.player = nextPlayer;
 		} else {
 			status.message = `Draw`;
 			status.style = `text-yellow-400 font-bold`;
