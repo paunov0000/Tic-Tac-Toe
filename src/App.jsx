@@ -74,8 +74,15 @@ export default function Board() {
 	return (
 		<>
 			<div className='flex gap-80 w-site justify-center text-3xl'>
-				<div className='flex flex-col items-center gap-24'>
-					<div className={status.style}>{status.message}</div>
+				<div className='flex flex-col items-center gap-24 w-[100%]'>
+					<div className={status.style}>
+						{status.message}
+						<span
+							className={status.player === 'X' ? xPlayerStyle : oPlayerStyle}
+						>
+							{status.player}
+						</span>
+					</div>
 					<div>
 						<div className='board-row'>
 							<Square
