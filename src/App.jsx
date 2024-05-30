@@ -42,7 +42,7 @@ export default function Game() {
 				></Board>
 			</div>
 			<div>
-				<ol>{moves}</ol>
+				<ol className='list-decimal'>{moves}</ol>
 			</div>
 		</div>
 	);
