@@ -7,12 +7,17 @@ export default function Game() {
 	const currentStage = history[history.length - 1];
 
 	function handlePlay(nextSquares) {
-
+		setHistory([...history, nextSquares]);
+		setXIsNext(!xIsNext);
 	}
 
 	return (
 		<>
-			<Board xIsNext={xIsNext} gameStage={currentStage} onPlay={handlePlay}></Board>
+			<Board
+				xIsNext={xIsNext}
+				gameStage={currentStage}
+				onPlay={handlePlay}
+			></Board>
 		</>
 	);
 }
