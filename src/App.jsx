@@ -29,12 +29,17 @@ export default function Game() {
 	});
 
 	return (
-		<>
+		<div className='flex'>
+			<div>
 			<Board
 				xIsNext={xIsNext}
 				gameStage={currentStage}
 				onPlay={handlePlay}
 			></Board>
-		</>
+			</div>
+			<div>
+				<ol>{moves}</ol>
+			</div>
+		</div>
 	);
 }
