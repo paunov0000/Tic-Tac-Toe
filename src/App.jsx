@@ -52,7 +52,7 @@ export default function Game() {
 					<ol>{moves}</ol>
 				</div>
 				<div>
-					<button onClick={() => setReversed(!isReversed)}>
+					<button className='bg-cyan-300 px-3 py-1 rounded-md hover:bg-cyan-400 hover:scale-x-105 hover:scale-y-110 duration-700 transition-all' onClick={() => setReversed(!isReversed)}>
 						{isReversed ? 'Normal order' : 'Reverse order'}
 					</button>
 				</div>
