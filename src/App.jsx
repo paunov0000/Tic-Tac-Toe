@@ -4,6 +4,7 @@ import Board from './components/Board';
 export default function Game() {
 	const [history, setHistory] = useState([Array(9).fill(null)]);
 	const [currentMove, setCurrentMove] = useState(0);
+	const [isReversed, setReversed] = useState(false);
 	const currentStage = history[currentMove];
 	const xIsNext = currentMove % 2 === 0;
 
@@ -17,23 +18,22 @@ export default function Game() {
 		setCurrentMove(nextMove);
 	}
 
-	const moves = history.map((squares, move) => {
-		let description;
-		if (move === currentMove && move > 0) {
-			description = `You're at move #${move}`;
-		} else if (move > 0) {
-			description = `Go to move #${move}`;
-		} else if (move === currentMove && move === 0) {
-			description = `You're at game start`;
-		} else {
-			description = 'Go to game start';
-		}
-		if (move === currentMove) {
-			return <p>{description}</p>;
-		}
+	let moves;
+	moves = history.map((squares, move) => {
+		let actMove = isReversed ? history.length - move - 1 : move;
+		console.log(actMove);
+
+		const description =
+			(actMove === currentMove ? `You're at` : `Go to`) +
+			(actMove === 0 ? ` game start` : ` move #${actMove}`);
+
 		return (
-			<li key={move}>
-				<button onClick={() => jumpTo(move)}>{description}</button>
+			<li key={actMove}>
+				{actMove === currentMove ? (
+					<p>{description}</p>
+				) : (
+					<button onClick={() => jumpTo(actMove)}>{description}</button>
+				)}
 			</li>
 		);
 	});
@@ -47,8 +47,15 @@ export default function Game() {
 					onPlay={handlePlay}
 				></Board>
 			</div>
-			<div>
-				<ul>{moves}</ul>
+			<div className='flex flex-col gap-10'>
+				<div>
+					<ol>{moves}</ol>
+				</div>
+				<div>
+					<button onClick={() => setReversed(!isReversed)}>
+						{isReversed ? 'Normal order' : 'Reverse order'}
+					</button>
+				</div>
 			</div>
 		</div>
 	);
