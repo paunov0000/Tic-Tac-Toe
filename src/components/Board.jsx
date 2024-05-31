@@ -82,8 +82,8 @@ export default function Board({ xIsNext, gameStage, onPlay }) {
 	// });
 
 	function handleClick(i) {
-		console.log(i);
-		console.log(gameStage[i]);
+		// console.log(i);
+		// console.log(gameStage[i]);
 		if (gameStage[i] || calculateWinner(gameStage)) {
 			return;
 		}
