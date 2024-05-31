@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Square from './Square';
 
-export default function Board({xIsNext, gameStage, onPlay}) {
+export default function Board({ xIsNext, gameStage, onPlay }) {
 	// const [xScore, setXScore] = useState(0);
 	// const [oScore, setOScore] = useState(0);
 
@@ -33,13 +33,66 @@ export default function Board({xIsNext, gameStage, onPlay}) {
 		}
 	}
 
+	const board = [];
+
+	for (let i = 0; i < 3; i++) {
+		const rows = [];
+		let className;
+		for (let j = 0; j < 3; j++) {
+			className = j === 2 ? 'w-16 h-16' : 'border-r-4 border-black w-16 h-16';
+			rows.push(
+				<Square
+					key={3 * i + j}
+					value={gameStage[3 * i + j]}
+					onSquareClick={() => handleClick(3 * i + j)}
+					className={className}
+				/>
+			);
+		}
+		className = i === 2 ? 'board-row' : 'board-row border-b-4 border-black';
+		board.push(
+			<div
+				key={i}
+				className={className}
+			>
+				{rows}
+			</div>
+		);
+	}
+
+	// const boardRows = [...Array(3)].map((x, i) => {
+	// 	const boardSquares = [...Array(3)].map((x, j) => {
+	// 		return (
+	// 			<Square
+	// 				key={3 * i + j}
+	// 				value={gameStage[3 * i + j]}
+	// 				onSquareClick={() => handleClick(3 * i + j)}
+	// 			/>
+	// 		);
+	// 	});
+
+	// 	return (
+	// 		<div
+	// 			key={i}
+	// 			className='board-row'
+	// 		>
+	// 			{boardSquares}
+	// 		</div>
+	// 	);
+	// });
+
 	function handleClick(i) {
+		console.log(i);
+		console.log(gameStage[i]);
 		if (gameStage[i] || calculateWinner(gameStage)) {
 			return;
 		}
+		// console.log(i);
 		const nextSquares = gameStage.slice();
 		let player = xIsNext ? 'X' : 'O';
 		nextSquares[i] = player;
+		// console.log(nextSquares[i]);
+		// console.log(i);
 		onPlay(nextSquares);
 	}
 
@@ -81,7 +134,7 @@ export default function Board({xIsNext, gameStage, onPlay}) {
 						</span>
 					</div>
 					<div>
-						<div className='board-row'>
+						{/* <div className='board-row'>
 							<Square
 								value={gameStage[0]}
 								onSquareClick={() => handleClick(0)}
@@ -131,7 +184,9 @@ export default function Board({xIsNext, gameStage, onPlay}) {
 								onSquareClick={() => handleClick(8)}
 								className='w-16 h-16'
 							></Square>
-						</div>
+						</div> */}
+						{board}
+						{/* {boardRows} */}
 					</div>
 				</div>
 				{/* <div>
