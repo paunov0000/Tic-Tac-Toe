@@ -18,7 +18,7 @@ export default function Board({ xIsNext, gameStage, onPlay }) {
 	if (winner !== null) {
 		status.message = `Winner: `;
 		status.style = `text-orange-400 font-bold`;
-		status.player = winner;
+		status.player = winner.player;
 		// winner === 'X' ? setXScore(xScore + 1) : setOScore(oScore + 1);
 		// setSquares(Array(9).fill(null)); //TODO: App enters in an infinite loop if not reset lol
 	} else {
@@ -39,12 +39,16 @@ export default function Board({ xIsNext, gameStage, onPlay }) {
 		const rows = [];
 		let className;
 		for (let j = 0; j < 3; j++) {
+			const squareNum = 3 * i + j;
 			className = j === 2 ? 'w-16 h-16' : 'border-r-4 border-black w-16 h-16';
+			if (winner && winner.winningSquares.includes(squareNum)) {
+				className += ' text-fuchsia-500 font-semibold';
+			}
 			rows.push(
 				<Square
-					key={3 * i + j}
-					value={gameStage[3 * i + j]}
-					onSquareClick={() => handleClick(3 * i + j)}
+					key={squareNum}
+					value={gameStage[squareNum]}
+					onSquareClick={() => handleClick(squareNum)}
 					className={className}
 				/>
 			);
@@ -115,7 +119,10 @@ export default function Board({ xIsNext, gameStage, onPlay }) {
 				gameStage[a] === gameStage[b] &&
 				gameStage[a] === gameStage[c]
 			) {
-				return gameStage[a];
+				return {
+					player: gameStage[a],
+					winningSquares: lines[index],
+				};
 			}
 		}
 		return null;
